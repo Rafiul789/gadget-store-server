@@ -41,6 +41,14 @@ app.post('/service',async(req,res)=>{
 const result=await serviceCollection.insertOne(newService);
 req.send(result)
 
+app.delete('/service/:id',async(req,res)=>{
+  const id=req.params.id;
+  const query={_id:ObjectId(id)};
+  const result=await serviceCollection.deleteOne(query);
+  res.send(result)
+})
+
+
 })
 
 
